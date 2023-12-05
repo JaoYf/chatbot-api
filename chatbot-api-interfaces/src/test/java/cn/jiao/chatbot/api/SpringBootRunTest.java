@@ -1,5 +1,6 @@
 package cn.jiao.chatbot.api;
 
+import cn.jiao.chatbot.api.domain.ai.IBaiDu;
 import cn.jiao.chatbot.api.domain.zsxq.IZsxpApi;
 import cn.jiao.chatbot.api.domain.zsxq.model.aggregates.UnAnsweredQuestionsAggregates;
 import cn.jiao.chatbot.api.domain.zsxq.model.vo.Topics;
@@ -35,6 +36,8 @@ public class SpringBootRunTest {
 
     @Autowired
     private IZsxpApi zsxpApi;
+    @Autowired
+    private IBaiDu BaiDu;
 
     @Test
     public void test_zsxqApi() throws IOException {
@@ -52,7 +55,11 @@ public class SpringBootRunTest {
             //TODO 问题text发送给ChatGPT，回显给变量text作为回答内容
             zsxpApi.answer(groupId, cookie, topicId, text, false);
         }
+    }
 
-
+    @Test
+    public void test_wxyy() throws IOException {
+        String res = BaiDu.doWxyy("帮我用java写一个冒泡排序");
+        log.info("测试接口：{}", res);
     }
 }
