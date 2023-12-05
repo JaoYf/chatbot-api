@@ -49,7 +49,7 @@ public class ApiTest {
         post.addHeader("cookie", "zsxq_access_token=150A11DB-1E6D-EA56-18E2-9D3356B417DF_F1DCE9811C723657; abtest_env=product; zsxqsessionid=8331bca7db521d0b8ea3c13a0ed6e517; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%22184542585485812%22%2C%22first_id%22%3A%2218c05846b54277-09128aa3ec9d9a8-26031051-1693734-18c05846b554d0%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%2C%22%24latest_referrer%22%3A%22%22%7D%2C%22identities%22%3A%22eyIkaWRlbnRpdHlfY29va2llX2lkIjoiMThjMDU4NDZiNTQyNzctMDkxMjhhYTNlYzlkOWE4LTI2MDMxMDUxLTE2OTM3MzQtMThjMDU4NDZiNTU0ZDAiLCIkaWRlbnRpdHlfbG9naW5faWQiOiIxODQ1NDI1ODU0ODU4MTIifQ%3D%3D%22%2C%22history_login_id%22%3A%7B%22name%22%3A%22%24identity_login_id%22%2C%22value%22%3A%22184542585485812%22%7D%2C%22%24device_id%22%3A%2218c05846b54277-09128aa3ec9d9a8-26031051-1693734-18c05846b554d0%22%7D");
         post.addHeader("Content-Type", "application/json,charset=utf8");
 
-        String jsonParam = "{\n" +
+        String paramJson = "{\n" +
                 "  \"req_data\": {\n" +
                 "    \"text\": \"your father\\n\",\n" +
                 "    \"image_ids\": [],\n" +
@@ -57,7 +57,34 @@ public class ApiTest {
                 "  }\n" +
                 "}";
 
-        StringEntity entity = new StringEntity(jsonParam, ContentType.create("text/json", "UTF-8"));
+        StringEntity entity = new StringEntity(paramJson, ContentType.create("text/json", "UTF-8"));
+        post.setEntity(entity);
+
+        CloseableHttpResponse response = httpClient.execute(post);
+        if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+            String res = EntityUtils.toString(response.getEntity());
+            System.out.println("res = " + res);
+        } else {
+            System.out.println(response.getStatusLine().getStatusCode());
+        }
+    }
+
+    @Test
+    void test_WXYY() throws IOException {
+        CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+
+        HttpPost post = new HttpPost("https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/completions_pro?access_token=24.b3203dfe0480f379b926a1dd28969d60.2592000.1704357666.282335-44367695");
+
+        post.addHeader("Content-Type", "application/json");
+
+        String paramJson = "{\n" +
+                "\t\"messages\": [{\n" +
+                "\t\t\"role\": \"user\",\n" +
+                "\t\t\"content\": \"帮我写一个冒泡排序\"\n" +
+                "\t}]\n" +
+                "}";
+
+        StringEntity entity = new StringEntity(paramJson, ContentType.create("text/json", "UTF-8"));
         post.setEntity(entity);
 
         CloseableHttpResponse response = httpClient.execute(post);
