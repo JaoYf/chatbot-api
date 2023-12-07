@@ -1,7 +1,12 @@
 server:
   port: 8090
+# 分组任务配置
 chatbot-api:
-  groupId: 15552815521442
-  cookie: zsxq_access_token=150A11DB-1E6D-EA56-18E2-9D3356B417DF_F1DCE9811C723657; abtest_env=product; zsxqsessionid=8331bca7db521d0b8ea3c13a0ed6e517; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%22184542585485812%22%2C%22first_id%22%3A%2218c05846b54277-09128aa3ec9d9a8-26031051-1693734-18c05846b554d0%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%2C%22%24latest_referrer%22%3A%22%22%7D%2C%22identities%22%3A%22eyIkaWRlbnRpdHlfY29va2llX2lkIjoiMThjMDU4NDZiNTQyNzctMDkxMjhhYTNlYzlkOWE4LTI2MDMxMDUxLTE2OTM3MzQtMThjMDU4NDZiNTU0ZDAiLCIkaWRlbnRpdHlfbG9naW5faWQiOiIxODQ1NDI1ODU0ODU4MTIifQ%3D%3D%22%2C%22history_login_id%22%3A%7B%22name%22%3A%22%24identity_login_id%22%2C%22value%22%3A%22184542585485812%22%7D%2C%22%24device_id%22%3A%2218c05846b54277-09128aa3ec9d9a8-26031051-1693734-18c05846b554d0%22%7D
-baidu:
-  access-token: 24.908a6e4a3c51c66e7d2b076ff500e4bf.2592000.1704363089.282335-44367695
+  launchList: group01 #,group02 # 启动几组，就配置几组
+  group01:
+    groupName: ChatGPT AI 问答助手
+    groupId: 15552815521442 # 知识星球ID
+    cookie: zsxq_access_token=150A11DB-1E6D-EA56-18E2-9D3356B417DF_F1DCE9811C723657; abtest_env=product; zsxqsessionid=8331bca7db521d0b8ea3c13a0ed6e517; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%22184542585485812%22%2C%22first_id%22%3A%2218c05846b54277-09128aa3ec9d9a8-26031051-1693734-18c05846b554d0%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%2C%22%24latest_referrer%22%3A%22%22%7D%2C%22identities%22%3A%22eyIkaWRlbnRpdHlfY29va2llX2lkIjoiMThjMDU4NDZiNTQyNzctMDkxMjhhYTNlYzlkOWE4LTI2MDMxMDUxLTE2OTM3MzQtMThjMDU4NDZiNTU0ZDAiLCIkaWRlbnRpdHlfbG9naW5faWQiOiIxODQ1NDI1ODU0ODU4MTIifQ%3D%3D%22%2C%22history_login_id%22%3A%7B%22name%22%3A%22%24identity_login_id%22%2C%22value%22%3A%22184542585485812%22%7D%2C%22%24device_id%22%3A%2218c05846b54277-09128aa3ec9d9a8-26031051-1693734-18c05846b554d0%22%7D
+    wxyyToken: 24.908a6e4a3c51c66e7d2b076ff500e4bf.2592000.1704363089.282335-44367695
+    cronExpression: MC8zMCAqICogKiAqID8= # 执行的频次 0/30 * * * * ? base64加密
+    silenced: false

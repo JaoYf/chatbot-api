@@ -1,6 +1,6 @@
 package cn.jiao.chatbot.api.domain.zsxq.service;
 
-import cn.jiao.chatbot.api.domain.zsxq.IZsxpApi;
+import cn.jiao.chatbot.api.domain.zsxq.IZsxqApi;
 import cn.jiao.chatbot.api.domain.zsxq.model.aggregates.UnAnsweredQuestionsAggregates;
 import cn.jiao.chatbot.api.domain.zsxq.model.req.AnswerReq;
 import cn.jiao.chatbot.api.domain.zsxq.model.req.ReqData;
@@ -28,9 +28,9 @@ import java.rmi.RemoteException;
  * 2023/12/4 21:47
  */
 @Service
-public class ZsxpApi implements IZsxpApi {
+public class ZsxqApi implements IZsxqApi {
 
-    private final Logger log = LoggerFactory.getLogger(ZsxpApi.class);
+    private final Logger log = LoggerFactory.getLogger(ZsxqApi.class);
 
     @Override
     public UnAnsweredQuestionsAggregates queryUnAnsweredQuestionsTopicId(String groupId, String cookie) throws IOException {

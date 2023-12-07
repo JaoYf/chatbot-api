@@ -7,7 +7,7 @@ import java.io.IOException;
  * @author 焦宇飞
  * 2023/12/4 20:58
  */
-public interface IZsxpApi {
+public interface IZsxqApi {
 
     UnAnsweredQuestionsAggregates queryUnAnsweredQuestionsTopicId(String groupId, String cookie) throws IOException;
 

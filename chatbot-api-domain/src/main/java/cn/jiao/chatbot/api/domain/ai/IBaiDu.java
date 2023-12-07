@@ -8,6 +8,6 @@ import java.io.IOException;
  */
 public interface IBaiDu {
 
-    String doWxyy(String question) throws IOException;
+    String doWxyy(String wxyyToken, String question) throws IOException;
 
 }

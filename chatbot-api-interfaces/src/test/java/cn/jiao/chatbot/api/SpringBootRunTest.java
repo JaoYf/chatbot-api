@@ -1,7 +1,7 @@
 package cn.jiao.chatbot.api;
 
 import cn.jiao.chatbot.api.domain.ai.IBaiDu;
-import cn.jiao.chatbot.api.domain.zsxq.IZsxpApi;
+import cn.jiao.chatbot.api.domain.zsxq.IZsxqApi;
 import cn.jiao.chatbot.api.domain.zsxq.model.aggregates.UnAnsweredQuestionsAggregates;
 import cn.jiao.chatbot.api.domain.zsxq.model.vo.Topics;
 import com.alibaba.fastjson.JSON;
@@ -35,13 +35,13 @@ public class SpringBootRunTest {
     private String cookie;
 
     @Autowired
-    private IZsxpApi zsxpApi;
+    private IZsxqApi zsxqApi;
     @Autowired
     private IBaiDu BaiDu;
 
     @Test
     public void test_zsxqApi() throws IOException {
-        UnAnsweredQuestionsAggregates unAnsweredQuestionsAggregates = zsxpApi.queryUnAnsweredQuestionsTopicId(groupId, cookie);
+        UnAnsweredQuestionsAggregates unAnsweredQuestionsAggregates = zsxqApi.queryUnAnsweredQuestionsTopicId(groupId, cookie);
         log.info("测试结果：{}", JSON.toJSONString(unAnsweredQuestionsAggregates));
         List<Topics> topics = unAnsweredQuestionsAggregates.getResp_data().getTopics();
 
@@ -53,13 +53,13 @@ public class SpringBootRunTest {
 
             //回答问题
             //TODO 问题text发送给ChatGPT，回显给变量text作为回答内容
-            zsxpApi.answer(groupId, cookie, topicId, text, false);
+            zsxqApi.answer(groupId, cookie, topicId, text, false);
         }
     }
 
-    @Test
-    public void test_wxyy() throws IOException {
-        String res = BaiDu.doWxyy("帮我用java写一个冒泡排序");
-        log.info("测试接口：{}", res);
-    }
+//    @Test
+//    public void test_wxyy() throws IOException {
+//        String res = BaiDu.doWxyy("帮我用java写一个冒泡排序");
+//        log.info("测试接口：{}", res);
+//    }
 }

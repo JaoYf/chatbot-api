@@ -28,14 +28,11 @@ public class BaiDu implements IBaiDu {
 
     private Logger log = LoggerFactory.getLogger(BaiDu.class);
 
-    @Value("${baidu.access-token}")
-    private String wxyyAccessToken;
-
     @Override
-    public String doWxyy(String question) throws IOException {
+    public String doWxyy(String wxyyToken, String question) throws IOException {
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
 
-        HttpPost post = new HttpPost("https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/completions_pro?access_token=" + wxyyAccessToken);
+        HttpPost post = new HttpPost("https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/completions_pro?access_token=" + wxyyToken);
 
         post.addHeader("Content-Type", "application/json");
 
